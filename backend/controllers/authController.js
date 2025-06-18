@@ -6,8 +6,14 @@ const User = require('../models/User');
 exports.signup = async (req, res) => {
   const { name, email, password } = req.body;
 
+  // ✅ Add this validation
+  if (!name || !email || !password) {
+    return res.status(400).json({ msg: 'All fields are required' });
+  }
+
   try {
     let user = await User.findOne({ email });
+    console.log('Received signup request body:', req.body);
     if (user) return res.status(400).json({ msg: 'User already exists' });
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -25,6 +31,7 @@ exports.signup = async (req, res) => {
     res.status(500).send('Server error');
   }
 };
+
 
 // POST /api/auth/login
 exports.login = async (req, res) => {

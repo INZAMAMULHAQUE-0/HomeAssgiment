@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors'); // ✅ Import CORS
 const connectDB = require('./config/db');
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/authRoutes');
@@ -7,6 +8,12 @@ dotenv.config();
 connectDB();
 
 const app = express();
+
+
+app.use(cors({
+  origin: 'http://localhost:5173', 
+  credentials: true
+}));
 
 app.use(express.json());
 
