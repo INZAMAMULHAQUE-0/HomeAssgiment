@@ -1,5 +1,5 @@
 const express = require('express');
-const cors = require('cors'); // ✅ Import CORS
+const cors = require('cors'); 
 const connectDB = require('./config/db');
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/authRoutes');
@@ -11,7 +11,7 @@ const app = express();
 
 
 app.use(cors({
-  origin: 'http://localhost:5173', 
+  origin: process.env.CLIENT_URL || 'http://localhost:5173', 
   credentials: true
 }));
 
