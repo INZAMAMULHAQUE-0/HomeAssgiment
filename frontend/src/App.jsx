@@ -4,7 +4,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Chat from './pages/Chat';
 import { AuthProvider, useAuth } from './context/AuthContext';
-import About from './pages/about';
+import About from './pages/About';
 import Contact from './pages/Contact'
 
 const ProtectedRoute = ({ children }) => {
